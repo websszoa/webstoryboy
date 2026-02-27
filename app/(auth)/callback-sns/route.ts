@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createClient } from "@/lib/supabase/server";
+import { APP_SITE_URL } from "@/lib/constants";
 
 export async function GET(request: NextRequest) {
   const { searchParams, origin } = new URL(request.url);
@@ -10,10 +11,11 @@ export async function GET(request: NextRequest) {
   if (!next.startsWith("/")) next = "/";
 
   // Base URL 확정 (성공/실패 리다이렉트 공통 사용)
-  const forwardedHost = request.headers.get("x-forwarded-host");
+  // 서버 배포 시 request.url의 origin이 내부 주소(localhost 등)로 올 수 있어, 프로덕션에서는 고정 사이트 URL 사용
   const isLocalEnv = process.env.NODE_ENV === "development";
-  const baseUrl =
-    !isLocalEnv && forwardedHost ? `https://${forwardedHost}` : origin;
+  const baseUrl = isLocalEnv
+    ? origin
+    : process.env.NEXT_PUBLIC_SITE_URL ?? APP_SITE_URL;
 
   if (code) {
     const supabase = await createClient();
