@@ -21,6 +21,10 @@ export async function GET(request: NextRequest) {
     const supabase = await createClient();
     const { error } = await supabase.auth.exchangeCodeForSession(code);
 
+    if (error) {
+      console.error("[callback-sns] exchangeCodeForSession 실패:", error.message, error);
+    }
+
     if (!error) {
       // 1. 탈퇴한 계정인지 확인
       const { data: isDeleted } = await supabase.rpc("is_my_account_deleted");
