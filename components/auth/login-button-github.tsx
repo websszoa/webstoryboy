@@ -17,7 +17,7 @@ export default function LoginButtonGithub() {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "github",
         options: {
-          redirectTo: `${window.location.origin}/callback`,
+          redirectTo: `${window.location.origin}/callback-sns`,
         },
       });
 

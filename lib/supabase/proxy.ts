@@ -5,10 +5,10 @@ export async function updateSession(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   const code = request.nextUrl.searchParams.get("code");
 
-  // OAuth 로그인 시 루트(/?code=...)로 오면 /callback으로 리다이렉트 (이메일 인증은 /callback-email 사용)
+  // OAuth 로그인 시 루트(/?code=...)로 오면 /callback-sns로 리다이렉트 (이메일 인증은 /callback-email 사용)
   if (pathname === "/" && code) {
     const url = request.nextUrl.clone();
-    url.pathname = "/callback";
+    url.pathname = "/callback-sns";
     return NextResponse.redirect(url);
   }
 
