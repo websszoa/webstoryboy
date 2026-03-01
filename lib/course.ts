@@ -1,11 +1,11 @@
-// 코스 메뉴
+// 코스 메뉴 (main-site, main-banner 등에서 사용)
 export const courseMenuItems = [
   {
     title: "마라톤 사이트 만들기",
     thumbnail: "/thumbnail/marathon.png",
     site: "https://www.runzoa.com/",
     level: "중급~고급",
-    src: "/tutorial/marathon",
+    src: "/tutorial/runzoa",
     description:
       "대회 데이터를 수집·정리하고 검색/필터·상세 페이지까지 갖춘 실전 마라톤 서비스를 구현합니다.",
     detailDescription:
@@ -175,6 +175,41 @@ export const courseMenuItems = [
       },
     ],
   },
+];
+
+/** 메인 코스 섹션 전용 (main-course에서만 사용: 웹디자인 링크 + 나머지 준비중) */
+export const mainCourseSectionItems = [
+  {
+    title: "웹디자인개발기능사",
+    level: "입문",
+    src: "/tutorial/webdesign",
+    comingSoon: false,
+    description:
+      "웹 표준과 시멘틱 마크업, flex 레이아웃으로 A·B 유형 레이아웃을 단계별로 연습합니다.",
+    skillCards: [
+      {
+        category: "frontend",
+        icon: { src: "/svg/html5.svg", alt: "html5", width: 40, height: 40 },
+        label: "HTML",
+      },
+      {
+        category: "frontend",
+        icon: { src: "/svg/css3.svg", alt: "css3", width: 40, height: 40 },
+        label: "CSS",
+      },
+      {
+        category: "frontend",
+        icon: {
+          src: "/svg/javascript.svg",
+          alt: "javascript",
+          width: 40,
+          height: 40,
+        },
+        label: "JavaScript",
+      },
+    ],
+  },
+  ...courseMenuItems.map((c) => ({ ...c, comingSoon: true })),
 ];
 
 // 툴 메뉴

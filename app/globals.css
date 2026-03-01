@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+@import "highlight.js/styles/github.min.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -153,7 +154,82 @@
   }
 
   .tutorial__container {
-    @apply max-w-7xl mx-auto py-6 md:py-10 px-4 min-h-[calc(100vh-300px)];
+    @apply max-w-7xl mx-auto font-anyvid px-4;
+  }
+
+  /* 튜토리얼 MDX */
+  .tutorial-prose {
+    @apply text-foreground;
+  }
+  .tutorial-prose h1 {
+    @apply text-2xl mb-4 font-paperlogy;
+  }
+  .tutorial-prose h2 {
+    @apply text-xl mt-8 mb-3 scroll-mt-24 font-paperlogy;
+  }
+  .tutorial-prose h3 {
+    @apply text-lg mt-6 mb-2 scroll-mt-24;
+  }
+  .tutorial-prose p {
+    @apply text-muted-foreground leading-relaxed mb-4 text-sm;
+  }
+  .tutorial-prose ul,
+  .tutorial-prose ol {
+    @apply mb-4 pl-6 text-muted-foreground;
+  }
+  .tutorial-prose ul {
+    @apply list-disc;
+  }
+  .tutorial-prose ol {
+    @apply list-decimal;
+  }
+  .tutorial-prose li {
+    @apply mb-1 text-sm;
+  }
+  .tutorial-prose a {
+    @apply text-brand underline underline-offset-4 hover:opacity-80;
+  }
+  .tutorial-prose code {
+    @apply rounded bg-muted px-1.5 py-0.5 text-sm font-anyvid;
+  }
+  .tutorial-prose pre {
+    @apply rounded-lg p-4 overflow-x-auto mb-4 font-nanumNeo bg-gray-100/80 dark:bg-gray-800/50;
+  }
+  .tutorial-prose pre:not(:has(.hljs)) {
+    @apply bg-muted;
+  }
+  .tutorial-prose pre code,
+  .tutorial-prose pre .hljs {
+    font-family: var(--font-anyvid), sans-serif;
+    background: transparent;
+  }
+  .tutorial-prose pre code {
+    @apply p-0 bg-none;
+  }
+  .tutorial-prose pre code.hljs {
+    padding: 0;
+  }
+
+  pre code.hljs {
+    padding: 0 !important;
+    background: none !important;
+    line-height: 1.5 !important;
+  }
+
+  .hljs-selector-id {
+    color: #22863a !important;
+  }
+  .hljs-attribute {
+    color: #e36209 !important;
+  }
+  .hljs-literal {
+    color: #005cc5 !important;
+  }
+  .hljs-selector-class {
+    color: #6f42c1 !important;
+  }
+  .hljs-selector-tag {
+    color: #d73a49 !important;
   }
 
   /* policy */

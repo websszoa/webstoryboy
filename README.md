@@ -90,3 +90,15 @@ npx shadcn@latest add tabs
 - GitHub → https://github.com/
 - Tailwind CSS → https://tailwindcss.com/
 - shadcn/ui → https://ui.shadcn.com/
+
+### mdx
+
+- next-mdx-remote — 서버에서 MDX 문자열을 컴포넌트로 렌더링 (RSC 지원).
+- remark-gfm — GFM 테이블/취소선 등.
+- rehype-slug — 헤딩에 id 부여 (오른쪽 TOC용).
+
+```
+npm install next-mdx-remote remark-gfm rehype-slug gray-matter
+npm install github-slugger
+npm install rehype-highlight
+```
