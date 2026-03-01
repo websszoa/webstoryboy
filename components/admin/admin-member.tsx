@@ -91,9 +91,10 @@ export default function AdminMember({ members }: { members: Profile[] }) {
               <TableHead className="w-[60px] text-center">이미지</TableHead>
               <TableHead>이름</TableHead>
               <TableHead>이메일</TableHead>
-              <TableHead className="text-center">역할</TableHead>
-              <TableHead className="w-[50px] text-center">방문</TableHead>
-              <TableHead className="text-center">상태</TableHead>
+              <TableHead className="w-[100px] text-center">가입방법</TableHead>
+              <TableHead className="w-[100px] text-center">역할</TableHead>
+              <TableHead className="w-[100px] text-center">방문</TableHead>
+              <TableHead className="w-[100px] text-center">상태</TableHead>
               <TableHead>가입일</TableHead>
               <TableHead className="w-[60px] text-center">관리</TableHead>
             </TableRow>
@@ -101,7 +102,7 @@ export default function AdminMember({ members }: { members: Profile[] }) {
           <TableBody>
             {memberRows.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={8} className="text-center py-10">
+                <TableCell colSpan={10} className="text-center py-10">
                   <div className="flex flex-col items-center gap-2">
                     <MessageSquareCode className="w-8 h-8 text-muted-foreground" />
                     <p className="text-muted-foreground">
@@ -112,7 +113,10 @@ export default function AdminMember({ members }: { members: Profile[] }) {
               </TableRow>
             ) : (
               memberRows.map((member, index) => (
-                <TableRow key={member.id} className="hover:bg-gray-50">
+                <TableRow
+                  key={member.id}
+                  className="hover:bg-gray-50 text-muted-foreground"
+                >
                   <TableCell className="text-center">
                     {memberRows.length - index}
                   </TableCell>
@@ -128,7 +132,35 @@ export default function AdminMember({ members }: { members: Profile[] }) {
                     </div>
                   </TableCell>
                   <TableCell>{member.full_name}</TableCell>
-                  <TableCell>{member.email}</TableCell>
+                  <TableCell>
+                    {member.email ? (
+                      <a
+                        href={`mailto:${member.email}`}
+                        className="underline-offset-4 hover:underline"
+                      >
+                        {member.email}
+                      </a>
+                    ) : (
+                      "-"
+                    )}
+                  </TableCell>
+                  <TableCell className="text-center">
+                    {member.signup_provider === "google" && (
+                      <Badge variant="outline">구글</Badge>
+                    )}
+                    {member.signup_provider === "kakao" && (
+                      <Badge variant="outline">카카오</Badge>
+                    )}
+                    {member.signup_provider === "github" && (
+                      <Badge variant="outline">깃헙</Badge>
+                    )}
+                    {member.signup_provider === "email" && (
+                      <Badge variant="outline">이메일</Badge>
+                    )}
+                    {!member.signup_provider && (
+                      <span className="text-muted-foreground">-</span>
+                    )}
+                  </TableCell>
                   <TableCell className="text-center">
                     {member.role === "admin" && (
                       <Badge variant="destructive">관리자</Badge>

@@ -8,7 +8,6 @@ import {
   adminLoginSchema,
   contactSchema,
 } from "./validations";
-import { LucideIcon } from "lucide-react";
 
 // 로그인 폼 타입 정의
 export type LoginFormValues = z.infer<typeof loginSchema>;
@@ -37,6 +36,7 @@ export interface Profile {
   email: string | null;
   full_name: string | null;
   avatar_url: string | null;
+  signup_provider: string | null;
   role: string | null;
   visit_count: number;
   is_deleted: boolean;

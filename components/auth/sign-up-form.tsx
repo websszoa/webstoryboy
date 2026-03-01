@@ -22,6 +22,10 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
+import LoginButtonGoogle from "./login-button-google";
+import LoginButtonKakao from "./login-button-kakao";
+import LoginButtonGithub from "./login-button-github";
+
 export function SignUpForm() {
   const router = useRouter();
 
@@ -158,7 +162,31 @@ export function SignUpForm() {
 
       <Divider text="또는" />
 
-      <div className="space-y-2 pt-2"></div>
+      <div className="space-y-2 pt-1">
+        <LoginButtonGoogle />
+        <LoginButtonKakao />
+        <LoginButtonGithub />
+      </div>
+
+      <div className="font-anyvid text-muted-foreground text-sm mt-4 text-center">
+        회원가입을 하시면{" "}
+        <a
+          href="/privacy"
+          target="_blank"
+          className="underline underline-offset-3 hover:text-brand transition-colors"
+        >
+          개인정보 처리방침
+        </a>{" "}
+        및{" "}
+        <a
+          href="/terms"
+          target="_blank"
+          className="underline underline-offset-3 hover:text-brand transition-colors"
+        >
+          이용약관
+        </a>
+        에 <br className="hidden md:block" /> 동의한 것으로 간주됩니다.
+      </div>
     </div>
   );
 }

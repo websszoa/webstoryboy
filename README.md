@@ -12,10 +12,11 @@ app/
 │   ├── sign-up-success/page.tsx  # 회원가입 완료
 │   ├── forgot-password/page.tsx  # 비밀번호 찾기
 │   ├── update-password/page.tsx  # 비밀번호 변경
-│   ├── confirm/route.ts          # 이메일 인증 확인
-│   └── callback/route.ts         # OAuth 콜백
+│   ├── callback-email/route.ts   # 이메일 인증·비밀번호 재설정 콜백
+│   └── callback-sns/route.ts     # OAuth(구글/카카오/깃헙) 콜백
 ├── (root)/
 │   ├── layout.tsx                # 메인 서비스 레이아웃
+│   ├── about/page.tsx            # 소개
 │   ├── notice/page.tsx           # 공지사항
 │   ├── terms/page.tsx            # 이용약관
 │   ├── privacy/page.tsx          # 개인정보처리방침
@@ -25,7 +26,6 @@ app/
 ├── admin/
 │   ├── layout.tsx                # 관리자 레이아웃
 │   ├── page.tsx                  # 관리자 대시보드
-│   ├── visitors/page.tsx         # 방문자 관리
 │   ├── member/page.tsx           # 회원 관리
 │   └── contact/page.tsx          # 문의 관리
 ├── layout.tsx                    # 루트 레이아웃
@@ -64,6 +64,7 @@ npx shadcn@latest add dropdown-menu
 npx shadcn@latest add tooltip
 npx shadcn@latest add sidebar
 npx shadcn@latest add carousel
+npx shadcn@latest add tabs
 ```
 
 ## 🛠 사용 도구 / 라이브러리

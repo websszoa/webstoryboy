@@ -36,6 +36,7 @@ export default function DialogMemberEdit({
   onUpdated,
 }: DialogMemberEditProps) {
   const [fullName, setFullName] = useState("");
+  const [signupProvider, setSignupProvider] = useState("");
   const [role, setRole] = useState("user");
   const [visitCount, setVisitCount] = useState(0);
   const [isDeleted, setIsDeleted] = useState(false);
@@ -45,6 +46,7 @@ export default function DialogMemberEdit({
   useEffect(() => {
     if (!open || !member) return;
     setFullName(member.full_name ?? "");
+    setSignupProvider(member.signup_provider ?? "");
     setRole(member.role ?? "user");
     setVisitCount(member.visit_count);
     setIsDeleted(member.is_deleted);
@@ -67,26 +69,36 @@ export default function DialogMemberEdit({
     if (!member) return false;
     return (
       (fullName ?? "") !== (member.full_name ?? "") ||
+      signupProvider !== (member.signup_provider ?? "") ||
       role !== member.role ||
       visitCount !== member.visit_count ||
       isDeleted !== member.is_deleted ||
       createdAt !== memberCreatedAtYmd
     );
-  }, [createdAt, fullName, isDeleted, member, memberCreatedAtYmd, role, visitCount]);
+  }, [
+    createdAt,
+    fullName,
+    isDeleted,
+    member,
+    memberCreatedAtYmd,
+    role,
+    signupProvider,
+    visitCount,
+  ]);
 
   const handleSave = () => {
     if (!member || !isChanged) return;
 
     startTransition(async () => {
       try {
-        const created_at_iso =
-          createdAt
-            ? new Date(createdAt + "T00:00:00.000Z").toISOString()
-            : (member.created_at ?? new Date().toISOString());
+        const created_at_iso = createdAt
+          ? new Date(createdAt + "T00:00:00.000Z").toISOString()
+          : (member.created_at ?? new Date().toISOString());
 
         const result = await updateMemberByAdmin({
           id: member.id,
           full_name: fullName.trim() || undefined,
+          signup_provider: signupProvider || null,
           role,
           visit_count: visitCount,
           is_deleted: isDeleted,
@@ -96,6 +108,7 @@ export default function DialogMemberEdit({
         onUpdated?.({
           ...member,
           full_name: result.full_name ?? member.full_name,
+          signup_provider: result.signup_provider,
           role: result.role,
           visit_count: result.visit_count,
           is_deleted: result.is_deleted,
@@ -145,7 +158,7 @@ export default function DialogMemberEdit({
           </div>
         </div>
 
-        {/* 수정 영역: 이름 / 가입일 / 역할 / 방문 / 상태 */}
+        {/* 수정 영역: 이름 / 가입방법 / 가입일 / 역할 / 방문 / 상태 */}
         <div className="space-y-3 font-anyvid text-muted-foreground border-t pt-4">
           <div className="space-y-2">
             <p className="text-sm text-slate-900">이름</p>
@@ -157,6 +170,25 @@ export default function DialogMemberEdit({
               disabled={!member || isPending}
               className="w-full"
             />
+          </div>
+
+          <div className="space-y-2">
+            <p className="text-sm text-slate-900">가입방법</p>
+            <Select
+              value={signupProvider}
+              onValueChange={setSignupProvider}
+              disabled={!member || isPending}
+            >
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="가입방법 선택" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="email">이메일</SelectItem>
+                <SelectItem value="google">구글</SelectItem>
+                <SelectItem value="kakao">카카오</SelectItem>
+                <SelectItem value="github">깃헙</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
 
           <div className="space-y-2">

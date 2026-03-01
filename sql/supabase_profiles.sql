@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS public.profiles (
   email TEXT,
   full_name TEXT,
   avatar_url TEXT,
+  signup_provider TEXT, 
   role TEXT DEFAULT 'user' NOT NULL CHECK (role IN ('user', 'admin')),
   visit_count INTEGER DEFAULT 0 NOT NULL, 
   is_deleted BOOLEAN DEFAULT false NOT NULL, 

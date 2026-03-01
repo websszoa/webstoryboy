@@ -7,6 +7,7 @@ import { createClient } from "@/lib/supabase/server";
 type UpdateMemberPayload = {
   id: string;
   full_name?: string;
+  signup_provider: string | null;
   role: string;
   visit_count: number;
   is_deleted: boolean;
@@ -37,12 +38,14 @@ export async function updateMemberByAdmin(payload: UpdateMemberPayload) {
 
   const updateData: {
     role: string;
+    signup_provider: string | null;
     visit_count: number;
     is_deleted: boolean;
     created_at: string;
     full_name?: string;
   } = {
     role: payload.role,
+    signup_provider: payload.signup_provider,
     visit_count: payload.visit_count,
     is_deleted: payload.is_deleted,
     created_at: payload.created_at,
@@ -64,12 +67,14 @@ export async function updateMemberByAdmin(payload: UpdateMemberPayload) {
 
   const result: {
     full_name?: string;
+    signup_provider: string | null;
     role: string;
     visit_count: number;
     is_deleted: boolean;
     created_at: string;
   } = {
     full_name: payload.full_name,
+    signup_provider: payload.signup_provider,
     role: payload.role,
     visit_count: payload.visit_count,
     is_deleted: payload.is_deleted,

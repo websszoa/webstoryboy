@@ -8,12 +8,13 @@ SECURITY DEFINER
 SET search_path = public
 AS $$
 BEGIN
-  INSERT INTO public.profiles (id, email, full_name, avatar_url, role, visit_count, is_deleted)
+  INSERT INTO public.profiles (id, email, full_name, avatar_url, signup_provider, role, visit_count, is_deleted)
   VALUES (
     NEW.id,
     NEW.email,
     NEW.raw_user_meta_data->>'full_name',
     NEW.raw_user_meta_data->>'avatar_url',
+    NEW.raw_app_meta_data->>'provider',
     'user',
     0,
     FALSE
@@ -151,7 +152,7 @@ GRANT EXECUTE ON FUNCTION public.is_my_account_deleted() TO authenticated;
 -- ============================================
 --
 -- [Trigger]
---  1. 회원가입 시 profiles 자동 생성
+--  1. 회원가입 시 profiles 자동 생성 (signup_provider: app_metadata->>'provider')
 --     함수: fn_trg_insert_profile()
 --     트리거: trg_auth_users_after_insert (auth.users AFTER INSERT)
 --

@@ -12,7 +12,7 @@ export default function MainTitle() {
       <span className="text-sm uppercase tracking-[0.35em] text-red-500 font-poppins">
         {APP_ENG_NAME}
       </span>
-      <h2 className="py-1 md:py-2 text-slate-900 text-2xl md:text-4xl font-anyvid leading-[1.4]">
+      <h2 className="py-1 md:py-2 text-slate-900 dark:text-white text-2xl md:text-4xl font-anyvid leading-[1.4]">
         실제로 구현하며, 배우는 개발 경험 이야기.
         <br />
         {APP_SLOGAN}
