@@ -54,6 +54,14 @@ export const courseDocList: Record<CourseId, DocItem[]> = {
     { slug: "29-script-menu5", title: "스크립트 메뉴5", order: 29 },
     { slug: "30-script-menu6", title: "스크립트 메뉴6", order: 30 },
     { slug: "31-script-menu-f3", title: "스크립트 메뉴 F-3", order: 31 },
+    { slug: "32-script-slide1", title: "스크립트 슬라이드1", order: 32 },
+    { slug: "33-script-slide2", title: "스크립트 슬라이드2", order: 33 },
+    { slug: "34-script-slide3", title: "스크립트 슬라이드3", order: 34 },
+    { slug: "35-script-slide4", title: "스크립트 슬라이드4", order: 35 },
+    { slug: "36-script-slide5", title: "스크립트 슬라이드5", order: 36 },
+    { slug: "37-script-slide6", title: "스크립트 슬라이드6", order: 37 },
+    { slug: "38-script-tab", title: "스크립트 탭 메뉴", order: 38 },
+    { slug: "39-script-popup", title: "스크립트 팝업", order: 39 },
   ],
 };
 

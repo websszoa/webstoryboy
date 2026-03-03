@@ -1,13 +1,17 @@
 import PageAboutIntro from "./page-about-intro";
 import PageAboutSteps from "./page-about-steps";
 
-export default function PageAbout() {
+interface PageAboutProps {
+  initialTab?: string;
+}
+
+export default function PageAbout({ initialTab }: PageAboutProps) {
   return (
     <div className="space-y-4">
       <PageAboutIntro />
 
       {/* 8단계 과정 탭 */}
-      <PageAboutSteps />
+      <PageAboutSteps key={initialTab ?? "01"} initialTab={initialTab} />
     </div>
   );
 }

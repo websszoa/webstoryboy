@@ -44,7 +44,7 @@ export const headerMenuItems: HeaderMenuItem[] = [
 // 모바일 메뉴
 export const mobileMenuItems: MenuItem[] = [
   { icon: Home, label: "홈", href: "/" },
-  { icon: Newspaper, label: "강의", href: "/lecture" },
+  { icon: Newspaper, label: "강의", href: "/tutorial" },
   { icon: BadgeDollarSign, label: "요금", href: "/price" },
   { icon: Grip, label: "더보기", href: "#more" },
 ];
@@ -84,20 +84,16 @@ export const adminMenuItems: MenuItem[] = [
 // 푸터 컬럼 메뉴
 export const footerColumnMenus: FooterColumnMenu[] = [
   {
-    title: "강의 정보",
+    title: "정보",
     items: [
-      { label: "webstoryboy", href: "/lecture/tutorial" },
-      { label: "youtube", href: "/lecture/youtube" },
+      { label: "youtube", href: "https://www.youtube.com/@webstoryboy" },
+      { label: "instargram", href: "https://www.instagram.com/webstoryboy" },
+      { label: "github", href: "https://github.com/webstoryboy" },
     ],
   },
   {
     title: "바로가기",
-    items: [
-      { label: "runzoa.com", href: "https://www.runzoa.com/" },
-      { label: "eventzoa.com", href: "https://www.eventzoa.com/" },
-      { label: "kcalzoa.com", href: "https://www.kcalzoa.com/" },
-      { label: "imagezoa.com", href: "https://www.imagezoa.com/" },
-    ],
+    items: [{ label: "runzoa.com", href: "https://www.runzoa.com/" }],
   },
   {
     title: "약관 및 정책",

@@ -31,12 +31,20 @@ const iconMap = {
   Expand,
 } as const;
 
-export default function PageAboutSteps() {
+interface PageAboutStepsProps {
+  initialTab?: string;
+}
+
+export default function PageAboutSteps({ initialTab }: PageAboutStepsProps) {
   const tabsId = useId();
-  const [activeTab, setActiveTab] = useState(steps[0]?.number ?? "01");
+  const fallbackTab = steps[0]?.number ?? "01";
+  const resolvedInitialTab =
+    steps.find((step) => step.number === initialTab)?.number ?? fallbackTab;
+  const [activeTab, setActiveTab] = useState(resolvedInitialTab);
 
   return (
     <section
+      id="about-steps"
       className="rounded-2xl border border-dashed border-gray-200 bg-white p-4 md:p-6 font-anyvid"
       aria-labelledby={`${tabsId}-title`}
     >

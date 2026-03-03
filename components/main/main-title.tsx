@@ -1,10 +1,10 @@
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 import {
   APP_ENG_NAME,
   APP_SHORT_DESCRIPTION,
   APP_SLOGAN,
 } from "@/lib/constants";
-import { Button } from "@/components/ui/button";
 
 export default function MainTitle() {
   return (

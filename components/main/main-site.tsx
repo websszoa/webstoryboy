@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { courseMenuItems } from "@/lib/course";
+import { courseMenuItems } from "@/lib/tutorial/course";
 import { ExternalLink } from "lucide-react";
 
 export default function MainSite() {

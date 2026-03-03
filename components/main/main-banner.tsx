@@ -1,13 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import { courseMenuItems } from "@/lib/course";
+import { courseMenuItems } from "@/lib/tutorial/course";
 import { Separator } from "@/components/ui/separator";
-import { CheckCircle2, ExternalLink, ArrowRight } from "lucide-react";
+import { ArrowRight, CheckCircle2, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function MainBanner() {
   return (
-    <div className="main__banner pt-20">
+    <div className="main__banner">
       {courseMenuItems.map((course, index) => (
         <div
           key={index}
@@ -17,16 +17,27 @@ export default function MainBanner() {
             <h3 className="text-2xl md:text-3xl font-paperlogy">
               {course.title}
             </h3>
-            <Link href={course.src || "#"} className="w-full md:w-auto">
+            {course.level === "준비중" ? (
               <Button
-                variant="destructive"
+                variant="outline"
                 size="sm"
-                className="font-nanumNeo shrink-0 bg-red-500 w-full md:w-auto"
+                disabled
+                className="font-nanumNeo shrink-0 w-full md:w-auto opacity-70 cursor-not-allowed"
               >
-                튜토리얼 보기
-                <ArrowRight className="w-4 h-4" />
+                {course.level}
               </Button>
-            </Link>
+            ) : (
+              <Link href={course.src || "#"} className="w-full md:w-auto">
+                <Button
+                  variant="destructive"
+                  size="sm"
+                  className="font-nanumNeo shrink-0 w-full md:w-auto"
+                >
+                  튜토리얼 보기
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
+              </Link>
+            )}
           </div>
           <p className="text-muted-foreground text-sm mb-2 leading-relaxed font-anyvid">
             {course.detailDescription}

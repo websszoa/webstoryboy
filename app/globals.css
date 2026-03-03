@@ -154,7 +154,7 @@
   }
 
   .tutorial__container {
-    @apply max-w-7xl mx-auto font-anyvid px-4;
+    @apply max-w-7xl mx-auto font-anyvid px-4 py-6 md:py-10;
   }
 
   /* 튜토리얼 MDX */

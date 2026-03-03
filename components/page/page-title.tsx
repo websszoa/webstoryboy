@@ -11,7 +11,7 @@ export default function PageTitle({
 }: PageTitleProps) {
   return (
     <div className="page__title text-center pb-8 md:pb-10">
-      <span className="text-xs font-semibold uppercase tracking-[0.35em] text-red-500/80">
+      <span className="text-sm uppercase tracking-[0.35em] text-red-500 font-poppins">
         {subtitle}
       </span>
       <h2 className="font-nanumNeo py-1 md:py-2 text-2xl text-slate-900 md:text-3xl">
